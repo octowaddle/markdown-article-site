@@ -1,0 +1,12 @@
+---
+import ArticlePreview from "../components/ArticlePreview.astro";
+import Base from "../layouts/Base.astro"
+
+let title = "Lorem ipsum"
+
+let articles = Astro.fetchContent('./articles/*.md');
+---
+
+<Base title={title}>
+    {articles.map(a => <ArticlePreview article={a} />)}
+</Base>

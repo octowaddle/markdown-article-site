@@ -1,0 +1,27 @@
+---
+export interface Props {
+  article: any;
+}
+
+const { article } = Astro.props;
+---
+
+<article>
+    <main>
+        <h2>
+            {article.title}
+        </h2>
+        <p>
+            {article.description}
+        </p>
+        <a href={article.url}>
+            Read more
+        </a>
+    </main>
+</article>
+
+<style lang="scss">
+    article {
+        width: 80ch;
+    }
+</style>
