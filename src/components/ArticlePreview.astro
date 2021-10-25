@@ -6,7 +6,7 @@ export interface Props {
 const { article } = Astro.props;
 ---
 
-<article>
+<a href={article.url}>
     <main>
         <h2>
             {article.title}
@@ -14,14 +14,57 @@ const { article } = Astro.props;
         <p>
             {article.description}
         </p>
-        <a href={article.url}>
-            Read more
-        </a>
     </main>
-</article>
+    <img src={article.image} alt={`Image of ${article.title}`} />
+</a>
 
 <style lang="scss">
-    article {
-        width: 80ch;
+    a {
+        background: var(--cultured-2);
+        border-radius: 0.5rem;
+        color: currentColor;
+        display: grid;
+        grid-template-columns: auto minmax(5rem, 20rem);
+        min-height: 15rem;
+        overflow: hidden;
+        text-decoration: none;        
+
+        &:not(:first-child) {
+            margin-top: 2rem;
+        }
+
+        main {
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            padding: 1rem;
+        }
+
+        img {            
+            background: var(--gainsboro);
+            display: grid;
+            height: 100%;
+            object-fit: cover;
+            place-items: center;
+            width: 100%;
+        }
+    }
+
+    @media only screen and (max-width: 600px) {
+        a {
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 10rem;
+            height: auto;
+        }
+    }
+
+    @media (prefers-color-scheme: dark) {
+        a {
+            background: var(--gunmetal);
+
+            img {
+                background: var(--davys-grey);
+            }
+        }
     }
 </style>
+

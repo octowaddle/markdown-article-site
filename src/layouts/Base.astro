@@ -22,22 +22,86 @@ const {title} = Astro.props
 
  <style lang="scss">
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;700&display=swap');
 
     html {
-        font-family: 'Roboto', sans-serif;
-        font-size: 14pt;
-    }
-
-    html, body {
+        //font-family: 'Roboto', sans-serif;
+        font-family: 'Crimson Text', serif;
+        font-size: 20px;
         min-width: 100%;
-        height: 100%;
-    }
+        min-height: 100%;
 
-    body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 0;
+        body {
+            min-height: 100%;
+            display: grid;
+            place-items: center;
+            padding: 1rem;
+
+            main {
+                display: grid;
+                grid-template-columns: 1fr minmax(10rem, 50rem) 1fr;
+                width: 100%;
+
+                & > :global(*) {
+                    grid-column: 2/3;
+                }       
+            }
+        }
     }
 </style>
 
+<style lang="scss" global>
+    :root {
+        --cultured: #f8f9faff;
+        --cultured-2: #e9ecefff;
+        --gainsboro: #dee2e6ff;
+        --light-gray: #ced4daff;
+        --cadet-blue-crayola: #adb5bdff;
+        --slate-gray: #6c757dff;
+        --davys-grey: #495057ff;
+        --gunmetal: #343a40ff;
+        --charleston-green: #212529ff;
+        
+        --celadon: #99e2b4ff;
+        --turquoise-green: #88d4abff;
+        --eton-blue: #78c6a3ff;
+        --mint: #67b99aff;
+        --zomp: #56ab91ff;
+        --polished-pine: #469d89ff;
+        --illuminating-emerald: #358f80ff;
+        --celadon-green: #248277ff;
+        --skobeloff: #14746fff;
+        --skobeloff-2: #036666ff;
+
+        color: var(--charleston-green);
+        background: var(--cultured);
+    }
+
+    ::selection {
+        color: var(--cultured);
+        background: var(--illuminating-emerald);
+    }
+
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--gainsboro);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--cadet-blue-crayola);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--illuminating-emerald);
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            color: var(--cultured);
+            background: var(--charleston-green);
+        }
+    }
+</style>
